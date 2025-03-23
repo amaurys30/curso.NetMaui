@@ -77,7 +77,7 @@ function mostrarCategorias(data) {
 
         for (const [elemento, detalles] of Object.entries(infoCategoria.elementos)) {
             const listItem = document.createElement("li");
-            listItem.innerHTML = `<a href="/html/standarElemento.html?elemento=${elemento}" class="text-light">${elemento}</a>`;
+            listItem.innerHTML = `<a href="html/standarElemento.html?elemento=${elemento}" class="text-light">${elemento}</a>`;
             elementList.appendChild(listItem);
         }
 
