@@ -81,9 +81,11 @@ function mostrarDetalles(data, elemento) {
 
 // Función para escapar caracteres especiales y evitar que se interpreten como HTML
 function escapeHtml(unsafe) {
-    return unsafe.replace(/&/g, "&amp;")
-                 .replace(/</g, "&lt;")
-                 .replace(/>/g, "&gt;")
-                 .replace(/"/g, "&quot;")
-                 .replace(/'/g, "&#039;");
+    return unsafe ? unsafe.replace(/&/g, "&amp;")
+     .replace(/</g, "&lt;")
+     .replace(/>/g, "&gt;")
+     .replace(/"/g, "&quot;")
+     .replace(/'/g, "&#039;")
+     : "";
+
 }
