@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     const cacheTimestamp = localStorage.getItem(cacheTimeKey);
     
     if (cachedData && cacheTimestamp && (Date.now() - cacheTimestamp < cacheDuration)) {
-        console.log("🔹 Cargando datos desde caché...");
+        detalleDiv.innerHTML = `<p>🔹 Cargando datos desde caché...</p>`;
         mostrarDetalles(JSON.parse(cachedData), elemento);
     } else {
-        console.log("🕐 Cargando datos desde API...");
+        detalleDiv.innerHTML = `<p>🕐 Cargando datos desde API...</p>`;
         try {
             const response = await fetch(apiUrl);
             const data = await response.json();
