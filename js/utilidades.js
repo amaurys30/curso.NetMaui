@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const cacheKey = "cacheDetalleApiData";
     const cacheTimeKey = "cacheDetalleApiTime";
-    const cacheDuration = 10 * 60 * 1000; // 10 minutos en milisegundos
+    const cacheDuration = 60 * 60 * 1000; // 1 hora en milisegundos
     
     const cachedData = localStorage.getItem(cacheKey);
     const cacheTimestamp = localStorage.getItem(cacheTimeKey);
@@ -34,12 +34,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 function mostrarDetalles(data, elemento) {
     const categorias = data.categorias;
     const detalleDiv = document.getElementById("detalle");
+    const imagenP = document.getElementById("imagenElemento");
     let encontrado = false;
 
     for (const [categoria, infoCategoria] of Object.entries(categorias)) {
         if (infoCategoria.elementos[elemento]) {
             const detalles = infoCategoria.elementos[elemento];
             encontrado = true;
+
+            imagenP.src = `../recursos${detalles.imagen}`;
 
             detalleDiv.innerHTML = `
                 <h2 class="text-warning">${elemento}</h2>
@@ -65,6 +68,7 @@ function mostrarDetalles(data, elemento) {
                     `).join("") : "<li>No tiene eventos</li>")}
                 </ul>
                 <p><a href="${detalles.referencias}" target="_blank" class="btn btn-info">🔗 Ver documentación oficial</a></p>
+
             `;
             break;
         }

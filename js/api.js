@@ -37,7 +37,24 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+
 function mostrarCategorias(data) {
+
+    const divInfo = document.getElementById("descripcionMaui");
+    divInfo.innerHTML = `
+        <p>${data.descripcion}</p>
+        `;
+    const infoTecnica = document.getElementById("infoTecnica");
+    infoTecnica.innerHTML = `
+        <p>Compatible con la version ${data.version} de .Net Maui y posteriores en:</p>
+        <ul>
+            ${(Array.isArray(data.compatibilidad) ? data.compatibilidad.map(compatibilida => `
+                <li><strong>${compatibilida}</strong></li>
+            `).join("") : "<li>No tiene compatibilidad</li>")}
+        </ul>
+    `;
+
+
     const categorias = data.categorias;
     const contentDiv = document.getElementById("content");
     contentDiv.innerHTML = ""; // Limpiar contenido previo
@@ -60,7 +77,7 @@ function mostrarCategorias(data) {
 
         for (const [elemento, detalles] of Object.entries(infoCategoria.elementos)) {
             const listItem = document.createElement("li");
-            listItem.innerHTML = `<a href="html/standarElemento.html?elemento=${elemento}" class="text-light">${elemento}</a>`;
+            listItem.innerHTML = `<a href="/html/standarElemento.html?elemento=${elemento}" class="text-light">${elemento}</a>`;
             elementList.appendChild(listItem);
         }
 
